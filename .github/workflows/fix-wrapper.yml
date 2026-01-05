@@ -16,11 +16,17 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew || true
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Remove broken Gradle wrapper
+        run: |
+          rm -rf gradle/wrapper
+          rm -f gradlew gradlew.bat
 
       - name: Generate Gradle Wrapper 8.2.2
-        run: ./gradlew wrapper --gradle-version 8.2.2 --distribution-type all
+        run: |
+          gradle wrapper --gradle-version 8.2.2 --distribution-type all
 
       - name: Commit wrapper
         run: |
