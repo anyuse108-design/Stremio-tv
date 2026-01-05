@@ -21,16 +21,16 @@ jobs:
           rm -rf gradle/wrapper
           rm -f gradlew gradlew.bat
 
-      - name: Generate Gradle Wrapper 8.2.2
+      - name: Generate Gradle Wrapper 8.2
         uses: gradle/gradle-build-action@v3
         with:
-          gradle-version: 8.2.2
-          arguments: wrapper --distribution-type all --no-configuration-cache
+          gradle-version: 8.2
+          arguments: wrapper --distribution-type all
 
       - name: Commit wrapper
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add gradle/wrapper gradlew gradlew.bat
-          git commit -m "Fix Gradle wrapper to 8.2.2" || echo "Nothing to commit"
+          git commit -m "Fix Gradle wrapper to 8.2" || echo "Nothing to commit"
           git push
