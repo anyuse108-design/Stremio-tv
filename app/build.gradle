@@ -3,22 +3,21 @@ plugins {
 }
 
 android {
-    namespace 'com.stremio.tv'
-    compileSdk 33
+    namespace "com.stremio.tv"
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.stremio.tv"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-
-        multiDexEnabled true
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile(
                 'proguard-android-optimize.txt'
             ), 'proguard-rules.pro'
@@ -26,12 +25,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }
